@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
+import logic
 
 app = Flask(__name__)
 app.secret_key = "hallo"
@@ -33,7 +34,13 @@ def hello_zufaelliges_doppel():
 
 @app.route('/spielplan', methods=["GET", "POST"])
 def spielplan():
-    return render_template("spielplan.html", mode=session["mode"], spieler=session["spieler"], runden=session["runden"])
+    runden = int(session["runden"])
+    spieler = int(session["spieler"])
+    mode = session["mode"]
+    plan = logic.spielplan_zufaelliges_doppel(spieler, runden)
+
+
+    return render_template("spielplan.html", plan=plan)
 
 
 
