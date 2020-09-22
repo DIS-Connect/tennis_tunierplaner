@@ -2,16 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+       <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
     <title>tennistunier_planer</title>
 </head>
 <body>
+<div style="text-align: center">
+<div class = "blue_box">
     <form action="#" method="post">
         <label for="cars">Wähle einen Modus: </label>
         <select id="mode" name="mode">
-            <option value="1">zufälliges Doppel</option>
-            <option value="saab">Nix</option>
+            <option value="1">Doppel</option>
+            <option value="2">Einzel</option>
+            <option value="3">Einzel- jeder gegen jeden</option>
         </select>
-        <input type="submit" value="submit">
+        <br><br>
+        <label for="spieler_label">Anzahl Spieler:</label>
+        <input type="text" id="spieler" name="spieler">
+        <br><br>
+
+        <label for="runden_label">Anzahl Runden</label>
+        <input type="text" id="runden" name="runden">
+        <br>
+        <br>
+        <input class="btn"type="submit" value="submit">
     </form>
+</div>
+</div>
 </body>
 </html>

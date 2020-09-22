@@ -1,0 +1,9 @@
+        random.shuffle(player_list)
+        matches = []
+        for i in range(len(player_list)):
+            print(i)
+            if i %2 == 0:
+
+                matches.append([player_list[i],player_list[i+1]])
+
+        plan.append([[], list(matches), [], [round + 1]])

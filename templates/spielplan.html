@@ -1,15 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
     <meta charset="UTF-8">
     <title>Spielplan</title>
 </head>
 <body>
-    {{ mode }}
-{{ spieler }}
-{{ runden }}
-{{ plan }}
+
+{% for runde in plan %}
+    <br><div class="runde">runde {{ runde[3][0] }}</div><br>
+    {% for spiel in runde[0] %}
+        {%  if not spiel == [] %}
+            <div class ="tennis_platz">
+                <div class = "tennis_container">
+                    <div class="tennis_left tennis_seite" onclick="set_winner(this)">
+                        <span class="nobr">{{ spiel[0] }}</span> <br><br>
+                        <span class="nobr">{{ spiel[1] }}</span>
+                    </div>
+                </div>
+
+                <div class = "tennis_container">
+                    <div class="tennis_right tennis_seite" onclick="set_winner(this)">
+
+                        <span class="nobr">{{ spiel[2] }}</span> <br><br>
+                        <span class="nobr">{{ spiel[3] }}</span>
+                    </div>
+                </div>
+            </div>
+{% endif %}
+
+    {% endfor %}
+     {% for einzel in runde[1] %}
+         {% if not einzel == [] %}
+            <div class ="tennis_platz">
+                <div class = "tennis_container">
+                    <div class="tennis_left tennis_seite" onclick="set_winner(this)">
+                        <br>
+                        <span class="nobr">{{ einzel[0] }}</span><br><br>
+                    </div>
+                </div>
+
+                <div class = "tennis_container">
+                    <div class="tennis_right tennis_seite" onclick="set_winner(this)">
+                        <br>
+                        <span class="nobr">{{  einzel[1] }}</span> <br><br>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            {% endfor %}
+
+
+
+
+      {% for aussetzer in runde[2] %}
+
+            <div class="aussetzer">
+            <br>
+                {{ aussetzer }}<br><br>
+          </div>
+
+          {% endfor %}
+{% endfor %}
+<br><br>
+<div class="sieger_ermitteln" onclick="sieger_ermitteln()">
+    Sieger Ermitteln
+</div>
+<div class="sieger_ermitteln" onclick="neuer_spielplan()">
+    neuer Spielplan
+</div>
 
 
 </body>
+<script>
+    function neuer_spielplan(){
+         window.location.href = '/spielplan_erstellen';
+
+    }
+    function set_winner(el){
+        if(el.classList.contains("gewinner")){
+            el.classList.remove("gewinner");
+        }else {
+
+            el.classList.add("gewinner");
+        }
+    }
+
+    function sieger_ermitteln(){
+        var gewinner = document.getElementsByClassName("gewinner")
+        var gewinner_array = []
+        for(i=0;i<gewinner.length; i++){
+
+           gewinner_array.push(gewinner[i].textContent)
+            alert(gewinner_array)
+        }
+    }
+</script>
 </html>

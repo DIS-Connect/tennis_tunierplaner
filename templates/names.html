@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <meta charset="UTF-8">
+
+    <title>zufälliges Doppel</title>
+</head>
+<body>
+    <form action="#" method="post">
+        <div>
+        <label for="spieler_label">Gruppe A:</label>
+            {% for i in range(player_a) %}
+        <input type="text" name="player_a_{{ i }}" id="spieler">
+            {% endfor %}
+        </div>
+        <div>
+        <label for="runden_label">Gruppe B:</label>
+          {% for i in range(player_b) %}
+                <input type="text" name="player_b_{{ i }}" id ="spieler">
+            {% endfor %}
+        </div>
+
+        <input type="submit" value="submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,178 @@
+body{
+    background-color: #dc143c;
+
+}
+span.nobr { white-space: nowrap; }
+
+.tennis_left{
+    border-bottom-left-radius: 8px ;
+    border-top-left-radius: 8px ;
+
+
+
+}
+
+.tennis_right{
+    border-bottom-right-radius: 8px ;
+    border-top-right-radius: 8px ;
+    margin-left: 2px;
+
+}
+
+.tennis_seite{
+padding:15px;
+    display: inline-block;
+    background-color: orange;
+    color:white;
+    width: 80px;
+}
+
+.tennis_container{
+    margin: 0 auto;
+    display:inline-block;
+}
+.tennis_platz{
+    text-align: center;
+    align-content: center;
+    display:inline-block;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px ;
+    background-color: white;
+    box-shadow: 5px 7px #ba1231;
+    cursor: pointer;
+}
+
+.gewinner{
+    background-color: #5bb51d;
+}
+
+.runde{
+    display: inline-block;
+    width:50%;
+    background-color: white;
+    color: #ba1231;
+    padding: 15px;
+    text-align: center;
+    margin-top:50px;
+    margin-left: -8px;
+
+}
+
+.aussetzer{
+    display: inline-block;
+    background-color: #3e6767;
+
+        padding: 15px;
+        width: 80px;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    box-shadow: 5px 7px #ba1231;
+        margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.sieger_ermitteln{
+    display: inline-block;
+    background-color: cornflowerblue;
+    cursor: pointer;
+        padding: 15px;
+        width: 80px;
+        border-radius: 8px;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+    box-shadow: 5px 7px #ba1231;
+        margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.blue_box{
+
+    margin: 0 auto;
+    background-color: #3c3c94;
+    color: white;
+    display: inline-block;
+    padding: 50px;
+    border-radius: 15px;
+
+}
+
+.btn{
+    box-shadow: 5px 3px #292964;
+    border: 0px;
+    border-radius: 5px;
+    background-color: #a55986;
+    color: white;
+    padding: 15px;
+}
+
+
+@media (pointer:none), (pointer:coarse) {
+    body{
+        font-size: 45px;
+    }
+    input{
+        font-size: 45px;
+    }
+
+    select{
+        font-size: 45px;
+    }
+
+    .tennis_platz{
+    border-radius: 15px;
+
+    box-shadow: 10px 14px #ba1231;
+    }
+
+    .tennis_seite{
+        width: 180px;
+    }
+
+    .tennis_left{
+    border-bottom-left-radius: 16px ;
+    border-top-left-radius: 16px ;
+
+
+
+}
+
+.tennis_right{
+    border-bottom-right-radius: 16px ;
+    border-top-right-radius: 16px ;
+    margin-left: 2px;
+
+}
+
+.aussetzer{
+    width: 160px;
+}
+
+.sieger_ermitteln{
+    width: 200px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
