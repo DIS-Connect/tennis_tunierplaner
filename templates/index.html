@@ -11,23 +11,57 @@
 <div class = "blue_box">
     <form action="#" method="post">
         <label for="cars">Wähle einen Modus: </label>
-        <select id="mode" name="mode">
-            <option value="1">Doppel</option>
-            <option value="2">Einzel</option>
-            <option value="3">Einzel- jeder gegen jeden</option>
+        <select id="mode" name="mode" onchange="select_input()">
+            <option value="1" id="1">Doppel</option>
+            <option value="2" id="2">Einzel</option>
+            <option value="3" id="3">Einzel- jeder gegen jeden</option>
+            <option value="4" id="4">einzel begrenzte Plätze</option>
         </select>
         <br><br>
+        <div id="spieler">
         <label for="spieler_label">Anzahl Spieler:</label>
-        <input type="text" id="spieler" name="spieler">
-        <br><br>
-
+        <input type="text"  name="spieler">
+            </div>
+        <br>
+                <div id="runden">
         <label for="runden_label">Anzahl Runden</label>
-        <input type="text" id="runden" name="runden">
+        <input type="text"  name="runden">
+        </div>
+
         <br>
-        <br>
-        <input class="btn"type="submit" value="submit">
+        <div id="fields" >
+        <label for="spieler_label">Anzahl Plätze:</label>
+        <input type="text" name="fields">
+        </div>
+            <br>
+
+        <input class="btn" type="submit" value="submit">
     </form>
 </div>
 </div>
+<script>
+                document.getElementById("runden").style.visibility = "visible";
+            document.getElementById("fields").style.visibility = "hidden";
+    function select_input(){
+        console.log("onchange")
+        var e = document.getElementById("mode");
+        var mode = e.options[e.selectedIndex].value;
+
+        if(mode == "1" || mode == "2"){
+
+            document.getElementById("runden").style.visibility = "visible";
+            document.getElementById("fields").style.visibility = "hidden";
+        }else if(mode == "3"){
+
+            document.getElementById("runden").style.visibility = "hidden";
+            document.getElementById("fields").style.visibility = "hidden";
+        }else if(mode == "4"){
+            document.getElementById("runden").style.visibility = "visible";
+            document.getElementById("fields").style.visibility = "visible";
+        }
+
+
+    }
+</script>
 </body>
 </html>

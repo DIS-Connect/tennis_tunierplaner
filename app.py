@@ -14,13 +14,22 @@ def index():
         if request.form["spieler"] == "":
             return redirect("/")
 
-        if request.form["runden"] == "":
-            return redirect("/")
+
 
         mode = request.form.get('mode')
         session["mode"] = mode
-        session["runden"] = request.form.get("runden")
+
         session["spieler"] = request.form.get("spieler")
+
+        if not mode == "3":
+            if request.form["runden"] == "":
+                return redirect("/")
+            session["runden"] = request.form.get("runden")
+            print(session["runden"])
+
+        elif mode == "4":
+            session["fields"] = request.form.get("fields")
+
 
         if mode == "1":
             return redirect("/names_doppel")
@@ -28,6 +37,9 @@ def index():
             return redirect("/names_einzel")
         elif mode == "3":
             return redirect("/names_einzel")
+        elif mode == "4":
+            return redirect("/names_einzel")
+
 
     # value 1 : zufälliges Doppel
 
@@ -73,15 +85,6 @@ def names_einzel():
         return redirect("/spielplan_erstellen")
 
 
-@app.route('/zufaelliges_doppel', methods=["GET", "POST"])
-def hello_zufaelliges_doppel():
-    if request.method == "GET":
-        return render_template("index.html")
-    elif request.method == "POST":
-
-        return redirect("/spielplan_erstellen")
-
-
 @app.route('/spielplan_erstellen')
 def spielplan_erstellen():
     print("spielplan erstellen")
@@ -97,7 +100,11 @@ def spielplan_erstellen():
     elif mode == "3":
         print(session["player_list"])
         session["plan"] = logic.jeder_gegen_jeden(session["player_list"])
+    elif mode == "4":
+        print(session["runden"])
+        session["plan"] = logic.limited_fields(session["player_list"], session["runden"], session["fields"])
         print(session["plan"])
+
     return redirect("/spielplan")
 
 
@@ -109,4 +116,3 @@ def spielplan():
 
 if __name__ == '__main__':
     app.run(debug=True)
-

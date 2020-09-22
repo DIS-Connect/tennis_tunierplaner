@@ -94,8 +94,36 @@
         for(i=0;i<gewinner.length; i++){
 
            gewinner_array.push(gewinner[i].textContent)
-            alert(gewinner_array)
+
+            gewinner_array[i] = gewinner_array[i].replaceAll(' ','')
+            gewinner_array[i] = gewinner_array[i].replaceAll('\n','')
+
         }
+        const array = (foo(gewinner_array));
+        var tabelle = ""
+        for(var i=0; i<array[0].length; i++){
+            tabelle += array[0][i] + ":    " + array[1][i] + "\n\n"
+        }
+        alert(tabelle)
+
     }
+
+  function foo(arr) {
+    var a = [], b = [], prev;
+
+    arr.sort();
+    for ( var i = 0; i < arr.length; i++ ) {
+        if ( arr[i] !== prev ) {
+            a.push(arr[i]);
+            b.push(1);
+        } else {
+            b[b.length-1]++;
+        }
+        prev = arr[i];
+    }
+
+    return [a, b];
+}
+
 </script>
 </html>
